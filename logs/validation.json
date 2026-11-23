@@ -1,0 +1,95 @@
+{
+  "executed_at": "2026-11-23",
+  "method": "Python 實際建立檔案與 HTMLParser 靜態檢查",
+  "repair_rounds": 0,
+  "events": [
+    {
+      "stage": "ingest",
+      "source": "S01",
+      "checks": {
+        "metadata_complete": true,
+        "doi_present": true,
+        "claim_and_limit_present": true
+      },
+      "result": "PASS"
+    },
+    {
+      "stage": "ingest",
+      "source": "S02",
+      "checks": {
+        "metadata_complete": true,
+        "doi_present": true,
+        "claim_and_limit_present": true
+      },
+      "result": "PASS"
+    },
+    {
+      "stage": "batch_1_gate",
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "result": "PASS",
+      "reason": "2/2 條目具可追溯來源、結論與限制；核對為摘要層級，不是全文逐段核查"
+    },
+    {
+      "stage": "ingest",
+      "source": "S03",
+      "checks": {
+        "metadata_complete": true,
+        "doi_present": true,
+        "claim_and_limit_present": true
+      },
+      "result": "PASS"
+    },
+    {
+      "stage": "ingest",
+      "source": "S04",
+      "checks": {
+        "metadata_complete": true,
+        "doi_present": true,
+        "claim_and_limit_present": true
+      },
+      "result": "PASS"
+    },
+    {
+      "stage": "ingest",
+      "source": "S05",
+      "checks": {
+        "metadata_complete": true,
+        "doi_present": true,
+        "claim_and_limit_present": true
+      },
+      "result": "PASS"
+    },
+    {
+      "stage": "batch_2_gate",
+      "sources": [
+        "S03",
+        "S04",
+        "S05"
+      ],
+      "result": "PASS",
+      "reason": "3/3 條目具來源、結論與限制"
+    },
+    {
+      "stage": "wiki_and_slide_validation",
+      "checks": {
+        "five_source_files": true,
+        "twelve_slides": true,
+        "navigation_controls": true,
+        "interactive_reveal": true,
+        "every_slide_has_wiki_source": true,
+        "wiki_has_all_five_ids": true,
+        "all_sources_have_doi": true,
+        "wiki_has_theory_and_application": true
+      },
+      "result": "PASS"
+    },
+    {
+      "stage": "runtime_scope",
+      "result": "NOT_RUN",
+      "reason": "尚未以真實瀏覽器進行逐頁視覺檢查；未部署 GitHub Pages；外部網站可用性不等於已驗證上線"
+    }
+  ]
+}
